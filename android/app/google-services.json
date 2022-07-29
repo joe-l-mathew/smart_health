@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "154303176221",
+    "project_id": "smart-health-4c9d4",
+    "storage_bucket": "smart-health-4c9d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:154303176221:android:9ca67b377670d9a639f0f4",
+        "android_client_info": {
+          "package_name": "com.aio.smart_health_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "154303176221-do6kbe9hd912eacja8kv8qe48ms4m4il.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSaayMGGqhoetNSfwcYM3_nbWYLxwDmng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "154303176221-do6kbe9hd912eacja8kv8qe48ms4m4il.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
