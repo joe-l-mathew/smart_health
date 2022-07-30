@@ -1,14 +1,15 @@
+// ignore_for_file: implementation_imports, unused_local_variable
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_health_project/constants.dart';
 import 'package:smart_health_project/firebase/firestore_model.dart';
 import 'package:smart_health_project/models/user_model.dart';
 import 'package:smart_health_project/provider/bottom_navigation_provider.dart';
 import 'package:smart_health_project/provider/user_provider.dart';
+import 'package:smart_health_project/screens/add_appoinment_screen.dart';
 import 'package:smart_health_project/screens/pulse_analyser_screen.dart';
 import 'package:smart_health_project/screens/uploader_screen.dart';
 
@@ -24,7 +25,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     FirestoreMethods().getUserDetails(context);
     super.initState();
   }
@@ -33,19 +33,29 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () async {
-          UserModel newModel = Provider.of<UserProvider>(context, listen: false)
-              .userModel!
-              .copyWith(heartRate: null);
-          FirebaseFirestore.instance
-              .collection(collectionUser)
-              .doc(FirebaseAuth.instance.currentUser!.uid)
-              .update({'heartRate': null});
-          FirestoreMethods().getUserDetails(context);
-
-          // Provider.of<UserProvider>(context, listen: false)
-          //     .setUserModel(newModel);
+          if (Provider.of<BottomNavigationBarProvider>(context, listen: false)
+                  .currentIndex ==
+              0) {
+            UserModel newModel =
+                Provider.of<UserProvider>(context, listen: false)
+                    .userModel!
+                    .copyWith(heartRate: null);
+            FirebaseFirestore.instance
+                .collection(collectionUser)
+                .doc(FirebaseAuth.instance.currentUser!.uid)
+                .update({'heartRate': null});
+            FirestoreMethods().getUserDetails(context);
+            // Provider.of<UserProvider>(context, listen: false)
+            //     .setUserModel(newModel);
+          } else if (Provider.of<BottomNavigationBarProvider>(context,
+                      listen: false)
+                  .currentIndex ==
+              1) {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (builder) => AddAppoinmentScreen()));
+          }
         },
       ),
       body:
@@ -66,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
 final pages = [
   const PulseAnalyser(),
   const BookAppoinmentScreen(),
-  UploaderScreen()
+  const UploaderScreen()
 ];
 final bottomnavItem = [
   const BottomNavigationBarItem(

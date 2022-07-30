@@ -46,6 +46,7 @@ class AuthMethods {
 
   Future<void> logoutUser(BuildContext context) async {
     await _auth.signOut();
+    // ignore: use_build_context_synchronously
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (builder) => const SplashScreen()),

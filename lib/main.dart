@@ -1,10 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_health_project/provider/appoinment_provider.dart';
 import 'package:smart_health_project/provider/bottom_navigation_provider.dart';
+import 'package:smart_health_project/provider/upload_image_provider.dart';
 import 'package:smart_health_project/provider/user_provider.dart';
-import 'package:smart_health_project/screens/login_screen.dart';
-import 'package:smart_health_project/screens/signup_screen.dart';
+
 import 'package:smart_health_project/screens/splash_screen.dart';
 
 void main() async {
@@ -12,7 +13,7 @@ void main() async {
   await Firebase.initializeApp(
       // options: DefaultFirebaseOptions.currentPlatform,
       );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -26,6 +27,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
             create: (context) => BottomNavigationBarProvider()),
         ChangeNotifierProvider(create: (context) => UserProvider()),
+        ChangeNotifierProvider(create: (context) => AppoinmenetProvider()),
+        ChangeNotifierProvider(create: (context) => UploadImageProvider())
       ],
       child: MaterialApp(
           darkTheme: ThemeData.dark(),
@@ -35,7 +38,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.amber,
               primaryColor: Colors.amber,
               primaryColorDark: Colors.amber),
-          home: SplashScreen()),
+          home: const SplashScreen()),
     );
   }
 }

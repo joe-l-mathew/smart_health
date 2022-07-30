@@ -1,10 +1,11 @@
+// ignore_for_file: unnecessary_import, prefer_const_constructors, use_build_context_synchronously
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_health_project/constants.dart';
 import 'package:smart_health_project/firebase/firestore_model.dart';
-import 'package:smart_health_project/provider/bottom_navigation_provider.dart';
 import 'package:smart_health_project/provider/user_provider.dart';
 
 class PulseAnalyser extends StatelessWidget {
@@ -30,7 +31,9 @@ class PulseAnalyser extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                              "Name : ${Provider.of<UserProvider>(context).userModel!.name}"),
+                            "Name : ${Provider.of<UserProvider>(context).userModel!.name}",
+                            style: TextStyle(color: Colors.black),
+                          ),
                           Provider.of<UserProvider>(context)
                                       .userModel!
                                       .heartRate ==
@@ -49,6 +52,9 @@ class PulseAnalyser extends StatelessWidget {
                               children: [
                                 Expanded(
                                     child: TextFormField(
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                  ),
                                   controller: pulseController,
                                 )),
                                 ElevatedButton(
@@ -70,7 +76,20 @@ class PulseAnalyser extends StatelessWidget {
                                     child: Text("Add"))
                               ],
                             )
-                          : Text("your text here"),
+                          : int.parse(Provider.of<UserProvider>(context)
+                                      .userModel!
+                                      .heartRate!) <
+                                  100
+                              ? Text(
+                                  "Your Heart rate is normal",
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 20),
+                                )
+                              : Text(
+                                  "Your heart rate is high --things to decrease pulse",
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 20),
+                                )
                     ],
                   ),
                 ),
@@ -87,7 +106,7 @@ class PulseAnalyser extends StatelessWidget {
                       AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
                           snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(
+                      return const Center(
                         child: CircularProgressIndicator(),
                       );
                     } else {

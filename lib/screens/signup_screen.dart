@@ -15,13 +15,13 @@ class SignupScreen extends StatelessWidget {
     final pass2Conteroller = TextEditingController();
     return Scaffold(
         appBar: AppBar(
-          title: Text("Signup"),
+          title: const Text("Signup"),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             children: [
-              Center(child: const Text("Create an account")),
+              const Center(child: Text("Create an account")),
               const SizedBox(
                 height: 20,
               ),
@@ -63,9 +63,9 @@ class SignupScreen extends StatelessWidget {
               TextButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (builder) => LoginScreen()));
+                        MaterialPageRoute(builder: (builder) => const LoginScreen()));
                   },
-                  child: Text("Already have an account?")),
+                  child: const Text("Already have an account?")),
               ElevatedButton(
                   onPressed: () {
                     if (nameConteroller.text.isNotEmpty &&
