@@ -10,7 +10,7 @@ class AdminPanelScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Appinments"),
+        title: const Text("Appoinments"),
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('aproval').snapshots(),

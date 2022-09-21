@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => UploadImageProvider())
       ],
       child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           darkTheme: ThemeData.dark(),
           themeMode: ThemeMode.dark,
           title: 'Flutter Demo',

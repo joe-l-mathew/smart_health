@@ -86,9 +86,11 @@ class PulseAnalyser extends StatelessWidget {
                                       color: Colors.black, fontSize: 20),
                                 )
                               : Text(
-                                  "Your heart rate is high --things to decrease pulse",
+                                  """-Breathe deeply. It will help you relax until your palpitations pass.
+-Splash your face with cold water. It stimulates a nerve that controls your heart rate.
+-Don’t panic. Stress and anxiety will make your palpitations worse.""",
                                   style: TextStyle(
-                                      color: Colors.black, fontSize: 20),
+                                      color: Colors.black, fontSize: 14),
                                 )
                     ],
                   ),
