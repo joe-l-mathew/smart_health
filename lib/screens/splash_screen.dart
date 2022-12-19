@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_health_project/screens/home_screen.dart';
-import 'package:smart_health_project/screens/signup_screen.dart';
+
+import 'signup_screen.dart';
+import 'uploader_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
       } else {
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (builder) => const HomeScreen()),
+            MaterialPageRoute(builder: (builder) => const UploaderScreen()),
             (route) => false);
       }
     });

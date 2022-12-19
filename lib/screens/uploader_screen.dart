@@ -19,7 +19,7 @@ class UploaderScreen extends StatelessWidget {
     final ImagePicker picker = ImagePicker();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Upload recipts"),
+        title: const Text("Upload Your Image"),
         actions: [
           IconButton(
               onPressed: () {
